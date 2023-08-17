@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% include 'include.html' %}
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">E-Commerce</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav me-auto">
+              <a class="nav-link active" aria-current="page" href="{{url_for('page_home')}}">Home</a>
+              <a class="nav-link" href="{{url_for('page_produtos')}}">Produtos</a>
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" style="color: lawngreen; font-weight: bold;">
+                <i class="fas fa-coins"> </i> R${{ '{:,.2f}'.format(current_user.valor).replace('.', '|').replace(',', '.').replace('|', ',') }}
+              </a>
+              <a class="nav-link" >Bem Vindo, <span style="color: lawngreen; font-weight: bold;">{{ current_user.usuario.upper() }}</span> </a>
+              <a class="nav-link" href="{{url_for('page_logout')}}">Logout</a>
+            </div>
+            {% else %}
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="{{url_for('page_login')}}">Login</a>
+              <a class="nav-link" href="{{url_for('page_cadastro')}}">Cadastros</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <section class="main_base col-md-12 mt-auto">
+          {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category, message in messages %} 
+                <div class="container">
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <button 
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="alert"
+                      aria-label="close">
+                    </button>
+                    {{message}}
+                  </div>
+                </div>           
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          
+          {% block conteudo %}
+          
+          {% endblock %}
+          
+        </section>
+      </div>
+    </div>
+
+
+
+  {% include 'footer.html' %}
+  
+</body>
+</html>

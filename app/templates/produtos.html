@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container-fluid">
+    <div class="row" style="margin-top: 20px; margin-left: 20px;">
+        <div class="col-lg-8 col-md-12 col-sm-12">
+            <h2 style="text-align: center;">Produtos Disponíveis</h2>
+            <p style="text-align: center;">Clique em comprar o item caso tenha interesse</p>
+            <hr>
+            <table class="table table-hover table-dark table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cód Barra</th>
+                        <th scope="col">Preço</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in itens %}
+                    {% include 'includes/modal_produtos.html' %}
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.nome}}</td>
+                        <td>{{item.cod_barra}}</td>
+                        <td class="text-right">R${{ '{:,.2f}'.format(item.preco).replace('.', '|').replace(',',
+                            '.').replace('|', ',') }}</td>
+                        <td>
+                            <button class="btn btn-outline btn-info me-2" data-bs-toggle="modal" data-bs-target="#exampleModal-{{item.id}}">Mais informações</button>
+                            <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalCompra-{{item.id}}">Comprar esse produto</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12">
+            <h2>Produtos Adquiridos</h2>
+            <p>Clique em devolver o item caso tenha interesse</p>
+            <hr>
+        </div>
+    </div>
+</div>
+  
+{% endblock %}
+

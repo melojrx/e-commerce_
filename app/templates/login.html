@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+{% include 'include.html' %}
+
+<body class="d-flex align-items-center justify-content-center">
+
+  <div class="container mt-3 mb-2">
+    <div class="row justify-content-center">
+      <div class="col-md-6 border rounded p-4 border-dark bg-dark">
+        <div class="text-center">
+          <i class="bi bi-person-circle md-4" style="font-size: 4em;"></i>
+          <h1 class="h3 mb-3 font-weight-normal"> Faça seu login</h1>
+        </div>
+        <form action="" method="POST" class="form-signin" style="color: whitesmoke;">
+          <div class="d-grid mt-3">
+            {{ form.hidden_tag() }}
+            {{ form.usuario.label(class="text-start") }}
+            {{ form.usuario(class="form-control mb-3", placeholder="Informe seu Usuário")}}
+            {{ form.senha.label(class="text-start") }}
+            {{ form.senha(class="form-control mb-3", placeholder="Informe sua senha")}}
+          </div>
+          <div class="d-grid mb-3">
+            {{ form.submit(class="btn btn-lg btn-success") }}
+          </div>
+          <div class="checkbox text-center">
+            <h6>Ainda não possui cadastro? <a href="{{url_for('page_cadastro')}}"> Cadastre-se aqui </a> </h6>
+          </div>
+        </form>
+       
+      </div>
+    </div>
+  </div>
+</body>

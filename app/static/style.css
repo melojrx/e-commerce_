@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Stick-Footer */
+.stick-footer {
+    background-color: #4D4D4D;
+    font-size: 0.9em;
+    position: sticky;
+    top: 100%;
+  }
+  
+footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  
+footer a:hover {
+    color: #f00;
+  }
+  
+.social-icons a {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  
+.social-icons a:hover {
+    color: #f00;
+    transform: translateY(-2px);
+  }
+  
+.btn-danger {
+    background-color: #f00;
+    color: #fff;
+    border-color: #f00;
+  }
+  
+.btn-danger:hover {
+    background-color: #fff;
+    color: #f00;
+  }
+  
